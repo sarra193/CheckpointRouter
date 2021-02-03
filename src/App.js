@@ -5,7 +5,7 @@ import Footer from './Componets/Footer/Footer'
 import { Data } from './data'
 import MovieList from './Componets/MovieList/MovieList'
 import bg from './img/IoAdd.jpg'
-import { Route, Router } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import MovieInformation from "./Componets/MovieInfo/MovieInformation"
 function App() {
 
@@ -31,10 +31,12 @@ function App() {
   return(
     <div style={{ backgroundImage: `url(${bg})` }}>
       <NavBar movies={movies} setSearch={setSearch} handleChange={handleChange} rating={rating} />
+      <Route exact path="/" render={ ()=>(<MovieList movies={movies.filter((movie) => movie.Title.toLowerCase().includes(search.toLowerCase().trim()) &&
+      movie.imdbRating >= rating)} AddNewMovie={AddNewMovie} /> )}/>
+    
+
+      <Route path="/MovieInformation/:id" render={() => (<MovieInformation movies={ movies}/>) }/>
       
-    <MovieList movies={movies.filter((movie) => movie.Title.toLowerCase().includes(search.toLowerCase().trim()) &&
-      movie.imdbRating >= rating)} AddNewMovie={AddNewMovie} /> 
-      <Route path='/MovieInformation' component={MovieInformation} />
     <Footer/>
     </div>
   )

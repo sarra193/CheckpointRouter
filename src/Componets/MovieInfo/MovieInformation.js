@@ -1,8 +1,9 @@
       import React from 'react'
       import './MovieInformation.css'
-      function MovieInformation() {
+      function MovieInformation({match,movies}) {
             return (
                   <div>
+                        {console.log(movies)}
                         <div className="movie-card">
       
       <div className="container">

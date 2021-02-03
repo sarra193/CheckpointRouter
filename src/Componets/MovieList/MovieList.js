@@ -2,7 +2,6 @@ import React from 'react'
 import MovieCard from '../MovieCard/MovieCard'
 import './MovieList.css'
 import AddMovie from '../AddMovie/AddMovie'
-import { Route } from 'react-router-dom'
 const MovieList = ({ filterByName,AddNewMovie,movies}) => {
       
       return (
@@ -19,7 +18,11 @@ const MovieList = ({ filterByName,AddNewMovie,movies}) => {
             }}
             >
             {movies.map((movie, i) => (
-           <MovieCard  {...movie} movies={movie} key={i} /> 
+            
+            <MovieCard  {...movie} movies={movie} key={i} /> 
+             
+           
+            
             ))}
             </div>
       <AddMovie AddNewMovie={AddNewMovie} /> 

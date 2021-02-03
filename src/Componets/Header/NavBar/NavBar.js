@@ -1,7 +1,6 @@
 import React from 'react'
 import { Navbar, Nav, FormControl, Form } from 'react-bootstrap'
 import Rate from '../Rate/Rate'
-
 const NavBar = ({  setSearch,rating ,handleChange}) => {
       
 
@@ -9,9 +8,10 @@ const NavBar = ({  setSearch,rating ,handleChange}) => {
             <Navbar bg="dark" variant="dark">
 
       <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-      <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            
+                  <Nav className="mr-auto">
+                        
+            <Nav.Link >Home</Nav.Link>
+      
       
                   </Nav>
 
