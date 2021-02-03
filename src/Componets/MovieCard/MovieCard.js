@@ -1,12 +1,12 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Card , ListGroup,ListGroupItem} from 'react-bootstrap'
 import Rate from '../Header/Rate/Rate'
 import { Link } from "react-router-dom";
 import MovieInformation from '../MovieInfo/MovieInformation' 
 const MovieCard = ({ movies }) => {
       
-            const [rating] = useState( movies.imdbRating)
-
+      const [rating] = useState(movies.imdbRating)
+   
       return (
 
             <Card style={{ width: '18rem' }}>

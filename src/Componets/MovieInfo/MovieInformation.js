@@ -1,80 +1,36 @@
-      import React from 'react'
-      import './MovieInformation.css'
-      function MovieInformation({match,movies}) {
-            return (
-                  <div>
-                        {console.log(movies)}
-                        <div className="movie-card">
-      
-      <div className="container">
-      
-      <a ><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_cover.jpg" alt="cover" className="cover" /></a>
-            
-      <div className="hero">
-                  
-            <div className="details">
-            
-            <div className="title1">The Hobbit <span>PG-13</span></div>
+import React,{useEffect,useState} from 'react'
+import './MovieInformation.css'
 
-            <div className="title2">The Battle of the Five Armies</div>    
-            
-            <fieldset className="rating">
-      <input type="radio" id="star5" name="rating" value="5" /><label className = "full" for="star5" title="Awesome - 5 stars"></label>
-      <input type="radio" id="star4half" name="rating" value="4 and a half" /><label className="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-      <input type="radio" id="star4" name="rating" value="4" checked /><label className = "full" for="star4" title="Pretty good - 4 stars"></label>
-      <input type="radio" id="star3half" name="rating" value="3 and a half" /><label className="half" for="star3half" title="Meh - 3.5 stars"></label>
-      <input type="radio" id="star3" name="rating" value="3" /><label className = "full" for="star3" title="Meh - 3 stars"></label>
-      <input type="radio" id="star2half" name="rating" value="2 and a half" /><label className="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-      <input type="radio" id="star2" name="rating" value="2" /><label className = "full" for="star2" title="Kinda bad - 2 stars"></label>
-      <input type="radio" id="star1half" name="rating" value="1 and a half" /><label className="half" for="star1half" title="Meh - 1.5 stars"></label>
-      <input type="radio" id="star1" name="rating" value="1" /><label className = "full" for="star1" title="Sucks big time - 1 star"></label>
-      <input type="radio" id="starhalf" name="rating" value="half" /><label className="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-      </fieldset>
-            
-            <span className="likes">109 likes</span>
-            
-            </div>{/* <!-- end details --> */}
-            
-      </div> {/* <!-- end hero --> */}
-      
-      <div className="description">
-            
-            <div className="column1">
-            <span className="tag">action</span>
-            <span className="tag">fantasy</span>
-            <span className="tag">adventure</span>
-            </div> {/* <!-- end column1 --> */}
-            
-            <div className="column2">
-            
-            <p>Bilbo Baggins is swept into a quest to reclaim the lost Dwarf Kingdom of Erebor from the fearsome dragon Smaug. Approached out of the blue by the wizard Gandalf the Grey, Bilbo finds himself joining a company of thirteen dwarves led by the legendary warrior, Thorin Oakenshield. Their journey will take them into the Wild; through... <a href="#">read more</a></p>
-            
-            <div className="avatars">
-            <a data-tooltip="Person 1" data-placement="top">
-                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_avatar1.png" alt="avatar1" />
-            </a>
-            
-            <a data-tooltip="Person 2" data-placement="top">
-                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_avatar2.png" alt="avatar2" />
-            </a>
-            
-            
-            <a data-tooltip="Person 3" data-placement="top">
-                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/hobbit_avatar3.png" alt="avatar3" />
-            </a>
-            
-            </div> {/* <!-- end avatars --> */}
-            
-            
-            
-            </div> {/* <!-- end column2 --> */}
-      </div> {/* <!-- end description --> */}
-      
-      
-      </div> {/* <!-- end container --> */}
-      </div> {/* <!-- end movie-card --> */}
-                  </div>
-            )
-      }
+                  function MovieInformation({ match, movies }) {
+                        
+                        const [movie, setMovie] = useState({});
+                        
+                        useEffect(() => {
+                              setMovie(movies.find((movie)=> movie.id === +match.params.id))
+                        }, [])
 
-      export default MovieInformation
+                              return (
+                                    <div>
+      <div className="movie_card" id="bright">
+      <div className="info_section">
+      <div className="movie_header">
+            <img className="locandina" src={movie.Poster} alt={movie.Poster } />
+            <h1>{movie.Title}</h1>
+            <h4>{ movie.Year}</h4>
+            
+      </div>
+      <div className="movie_desc">
+      <p className="text">
+      {movie.Plot}
+      </p>
+      </div>
+      </div>
+      <div className="blur_back " style={{ backgroundImage: `url(${movie.Poster})`,backgroundRepeat:"no-repeat",backgroundSize: "cover"}}></div>
+      </div>
+                                          
+     <iframe width="1519" height="581" title={movie.Title} src={movie.trailer} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                              )
+                        }
+
+                        export default MovieInformation

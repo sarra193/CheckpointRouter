@@ -35,7 +35,7 @@ function App() {
       movie.imdbRating >= rating)} AddNewMovie={AddNewMovie} /> )}/>
     
 
-      <Route path="/MovieInformation/:id" render={() => (<MovieInformation movies={ movies}/>) }/>
+      <Route path="/MovieInformation/:id" render={(props) => (<MovieInformation {...props} movies={ movies}/>) }/>
       
     <Footer/>
     </div>
