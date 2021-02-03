@@ -27,8 +27,7 @@
       const [Plot, setPlot] = useState("");
       const [imdbRating, setimdbRating] = useState("");
       const [Poster, setPoster] = useState("");
-
-
+      const[id]=useState(Date.now())
 
 
             
@@ -87,8 +86,7 @@
                   Poster URL
             </Form.Label>
             <Col sm="10">
-                  <Form.Control type="text" placeholder="PosterUrl" onChange={(e)=>setPoster(e.target.value)} 
-      />
+                  <Form.Control type="text" placeholder="PosterUrl" onChange={(e)=>setPoster(e.target.value)} />
             </Col>
                         </Form.Group>
                         
@@ -102,6 +100,7 @@
                               </Form.Group>
                                     <Button variant="outline-success" onClick={() => {
                                           AddNewMovie({
+                                                id:id,
                                                 Title: Title,
                                                 Year: Year,
                                                 Poster: Poster,
